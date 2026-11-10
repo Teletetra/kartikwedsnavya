@@ -56,7 +56,7 @@ export function VenueSection() {
                             <span className="font-display text-sm tracking-[0.15em] uppercase">{event.name}</span>
                           </span>
                           <span className="text-sm text-paper/80">
-                            {formatEventDate(event.date).replace(/, \\d{4}$/, '')}
+                            {formatEventDate(event.date).replace(/, \d{4}$/, '')}
                             {event.venue ? ` · ${event.venue}` : ` · ${event.address}`}
                           </span>
                         </button>
@@ -92,7 +92,7 @@ export function VenueSection() {
               )}
               {contactPhone && (
                 <a
-                  href={`tel:${contactPhone.replace(/\\s/g, '')}`}
+                  href={`tel:${contactPhone.replace(/\s/g, '')}`}
                   className="inline-flex items-center gap-2 rounded-full border border-gold-light px-5 py-3 font-display text-xs tracking-[0.18em] text-gold-light uppercase"
                 >
                   <Phone className="size-4" /> Call family
