@@ -119,7 +119,7 @@ function EventCard({ event, index }: { event: WeddingEvent; index: number }) {
           </a>
           {location && (
             <a
-              href={mapsUrl(location)}
+              href={event.mapUrl || mapsUrl(location)}
               target="_blank"
               rel="noreferrer"
               className={cn(
