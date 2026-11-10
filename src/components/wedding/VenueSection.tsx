@@ -6,6 +6,8 @@ import { Corners, Mandala, SectionHeading } from './Ornaments'
 export function VenueSection() {
   const { venue, contactPhone } = wedding
   const query = venue.mapQuery || [venue.name, venue.address].filter(Boolean).join(', ')
+  const mandha = wedding.events.find((event) => event.id === 'mandha')
+  const mapEmbedUrl = mandha?.mapEmbedUrl || (query ? `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed` : '')
 
   return (
     <section id="venue" className="scroll-mt-6 px-4 py-16 sm:px-6 sm:py-24">
@@ -37,12 +39,17 @@ export function VenueSection() {
                     {formatEventDate(e.date).replace(/, \d{4}$/, '')}
                     {e.venue ? ` · ${e.venue}` : ''}
                   </span>
+                  {e.mapUrl && (
+                    <a href={e.mapUrl} target="_blank" rel="noreferrer" className="text-xs font-display tracking-wider text-gold-light underline underline-offset-4">
+                      Directions
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              {query ? (
+              {mapEmbedUrl ? (
                 <a
                   href={mapsUrl(query)}
                   target="_blank"
@@ -76,8 +83,8 @@ export function VenueSection() {
           >
             {query ? (
               <iframe
-                title="Wedding venue map"
-                src={`https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`}
+                title="Mandha venue map"
+                src={mapEmbedUrl}
                 className="absolute inset-0 size-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
