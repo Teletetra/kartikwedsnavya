@@ -108,14 +108,14 @@ export const wedding = {
       date: '2026-12-11',
       time: '',
       venue: '',
-      address: 'Saharanpur, Uttar Pradesh',
+      address: 'Seekri, Uttar Pradesh 247231',
       description:
         'The sacred mandap is raised and the family gathers for the auspicious rituals.',
       celebrationMessage: 'The Mandha rituals have begun. Shubh aashirwad! 🪔',
       image: '/img/mandha.jpg',
       accent: '#B0452A',
-      mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=30.04060050075226%2C77.47750239600924',
-      mapEmbedUrl: 'https://www.google.com/maps?q=30.04060050075226%2C77.47750239600924&z=15&output=embed',
+      mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=30.041740%2C77.477892',
+      mapEmbedUrl: 'https://www.google.com/maps?q=30.041740%2C77.477892&z=15&output=embed',
     },
     {
       id: 'barat',
