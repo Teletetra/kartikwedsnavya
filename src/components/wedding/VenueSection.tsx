@@ -1,13 +1,19 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Navigation, Phone } from 'lucide-react'
-import { formatEventDate, mapsUrl, wedding } from '@/config/wedding'
+import { formatEventDate, mapsUrl, wedding, type WeddingEventId } from '@/config/wedding'
 import { Corners, Mandala, SectionHeading } from './Ornaments'
 
 export function VenueSection() {
-  const { venue, contactPhone } = wedding
-  const query = venue.mapQuery || [venue.name, venue.address].filter(Boolean).join(', ')
-  const mandha = wedding.events.find((event) => event.id === 'mandha')
-  const mapEmbedUrl = mandha?.mapEmbedUrl || (query ? `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed` : '')
+  const { contactPhone } = wedding
+  const [selectedEventId, setSelectedEventId] = useState<WeddingEventId>('mandha')
+  const selectableEvents = wedding.events.filter((event) => event.id === 'mandha' || event.id === 'barat')
+  const selectedEvent = selectableEvents.find((event) => event.id === selectedEventId) ?? selectableEvents[0]
+  const selectedLocation = selectedEvent
+    ? [selectedEvent.venue, selectedEvent.address].filter(Boolean).join(', ')
+    : ''
+  const selectedMapUrl = selectedEvent?.mapUrl || (selectedLocation ? mapsUrl(selectedLocation) : '')
+  const mapEmbedUrl = selectedEvent?.mapEmbedUrl || ''
 
   return (
     <section id="venue" className="scroll-mt-6 px-4 py-16 sm:px-6 sm:py-24">
@@ -23,35 +29,56 @@ export function VenueSection() {
           >
             <Corners />
             <MapPin className="size-8 text-gold-light" />
-            <h3 className="mt-3 font-display text-2xl tracking-[0.12em] uppercase">{venue.name || 'Venue to be announced'}</h3>
+            <h3 className="mt-3 font-display text-2xl tracking-[0.12em] uppercase">
+              {selectedEvent?.venue || selectedEvent?.name || 'Venue to be announced'}
+            </h3>
             <p className="mt-2 text-lg text-paper/85">
-              {venue.address || 'The full address and directions will be shared here shortly.'}
+              {selectedEvent ? selectedLocation : 'The full address and directions will be shared here shortly.'}
             </p>
 
-            <ul className="mt-6 space-y-3 border-t border-gold/40 pt-5">
-              {wedding.events.map((e) => (
-                <li key={e.id} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-                  <span>
-                    <span className="font-hindi text-xl text-gold-light">{e.nameHindi}</span>{' '}
-                    <span className="font-display text-sm tracking-[0.15em] uppercase">{e.name}</span>
-                  </span>
-                  <span className="text-base text-paper/80">
-                    {formatEventDate(e.date).replace(/, \d{4}$/, '')}
-                    {e.venue ? ` · ${e.venue}` : ''}
-                  </span>
-                  {e.mapUrl && (
-                    <a href={e.mapUrl} target="_blank" rel="noreferrer" className="text-xs font-display tracking-wider text-gold-light underline underline-offset-4">
-                      Directions
-                    </a>
-                  )}
-                </li>
-              ))}
-            </ul>
+            <div className="mt-6 border-t border-gold/40 pt-5">
+              <p className="mb-3 font-display text-xs tracking-[0.2em] text-gold-light uppercase">Choose a function location</p>
+              <ul className="space-y-2">
+                {wedding.events.map((event) => {
+                  const hasLocation = Boolean(event.mapUrl && event.mapEmbedUrl)
+                  const isSelected = event.id === selectedEventId
+                  return (
+                    <li key={event.id}>
+                      {hasLocation ? (
+                        <button
+                          type="button"
+                          aria-pressed={isSelected}
+                          onClick={() => setSelectedEventId(event.id)}
+                          className={`flex w-full flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded px-3 py-2 text-left transition-colors ${isSelected ? 'bg-gold/20 ring-1 ring-gold/70' : 'hover:bg-white/10'}`}
+                        >
+                          <span>
+                            <span className="font-hindi text-xl text-gold-light">{event.nameHindi}</span>{' '}
+                            <span className="font-display text-sm tracking-[0.15em] uppercase">{event.name}</span>
+                          </span>
+                          <span className="text-sm text-paper/80">
+                            {formatEventDate(event.date).replace(/, \\d{4}$/, '')}
+                            {event.venue ? ` · ${event.venue}` : ` · ${event.address}`}
+                          </span>
+                        </button>
+                      ) : (
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5 px-3 py-2 opacity-75">
+                          <span>
+                            <span className="font-hindi text-xl text-gold-light">{event.nameHindi}</span>{' '}
+                            <span className="font-display text-sm tracking-[0.15em] uppercase">{event.name}</span>
+                          </span>
+                          <span className="text-sm text-paper/75">Venue details will be shared soon</span>
+                        </div>
+                      )}
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              {mapEmbedUrl ? (
+              {selectedMapUrl ? (
                 <a
-                  href={mapsUrl(query)}
+                  href={selectedMapUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-3 font-display text-xs font-semibold tracking-[0.18em] text-maroon-deep uppercase shadow"
@@ -65,7 +92,7 @@ export function VenueSection() {
               )}
               {contactPhone && (
                 <a
-                  href={`tel:${contactPhone.replace(/\s/g, '')}`}
+                  href={`tel:${contactPhone.replace(/\\s/g, '')}`}
                   className="inline-flex items-center gap-2 rounded-full border border-gold-light px-5 py-3 font-display text-xs tracking-[0.18em] text-gold-light uppercase"
                 >
                   <Phone className="size-4" /> Call family
@@ -81,9 +108,9 @@ export function VenueSection() {
             transition={{ delay: 0.1 }}
             className="frame relative min-h-80 overflow-hidden rounded-md bg-paper"
           >
-            {query ? (
+            {mapEmbedUrl ? (
               <iframe
-                title="Mandha venue map"
+                title={`${selectedEvent?.name ?? 'Wedding'} venue map`}
                 src={mapEmbedUrl}
                 className="absolute inset-0 size-full border-0"
                 loading="lazy"
