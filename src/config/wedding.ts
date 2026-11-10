@@ -28,6 +28,10 @@ export interface WeddingEvent {
   image: string
   /** Accent used for the card tint */
   accent: string
+  /** Optional event-specific Google Maps directions URL */
+  mapUrl?: string
+  /** Optional Google Maps embed URL for the venue map */
+  mapEmbedUrl?: string
 }
 
 export interface GalleryItem {
@@ -110,6 +114,8 @@ export const wedding = {
       celebrationMessage: 'The Mandha rituals have begun. Shubh aashirwad! 🪔',
       image: '/img/mandha.jpg',
       accent: '#B0452A',
+      mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=30.04060050075226%2C77.47750239600924',
+      mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!4v1794280277414!6m8!1m7!1sgBkMKsKLi2CdjM8iMuveDA!2m2!1d30.04060050075226!2d77.47750239600924!3f33.75557348588183!4f-4.6177830707496526!5f0.7820865974627469',
     },
     {
       id: 'barat',
@@ -124,6 +130,7 @@ export const wedding = {
       celebrationMessage: 'The Barat has arrived! Shubh Vivah — Kartik weds Navya. 🐎✨',
       image: '/img/barat.jpg',
       accent: '#741C28',
+      mapUrl: 'https://maps.app.goo.gl/py6STvqbRJ6s3bZN7',
     },
   ] as WeddingEvent[],
 
