@@ -6,9 +6,9 @@ import { NotFoundPage } from '@/components/error-pages'
 
 import '../styles.css'
 
-const siteName = 'Kartik weds Navya · शुभ विवाह · 7–12 December 2026'
+const siteName = 'Kartik weds Navya · शुभ विवाह · 6–12 December 2026'
 const siteDescription =
-  'With the blessings of Lord Ganesha and our families, you are warmly invited to the wedding celebrations of Kartik Rawal & Navya Choudhary — Haldi, Mehndi, Mandha and Barat, 7–12 December 2026.'
+  'With the blessings of Lord Ganesha and our families, you are warmly invited to the wedding celebrations of Kartik Rawal & Navya Choudhary — Haldi, Mehndi, Mandha and Barat, 6–12 December 2026.'
 
 export const Route = createRootRoute({
   head: () => ({

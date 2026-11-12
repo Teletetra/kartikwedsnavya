@@ -39,7 +39,7 @@ export function VenueSection() {
             <div className="mt-6 border-t border-gold/40 pt-5">
               <p className="mb-3 font-display text-xs tracking-[0.2em] text-gold-light uppercase">Choose a function location</p>
               <ul className="space-y-2">
-                {wedding.events.map((event) => {
+                {selectableEvents.map((event) => {
                   const hasLocation = Boolean(event.mapUrl && event.mapEmbedUrl)
                   const isSelected = event.id === selectedEventId
                   return (

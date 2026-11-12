@@ -62,8 +62,8 @@ export const wedding = {
     photo: '' as string,
   },
 
-  dateRange: '7 – 12 December 2026',
-  dateRangeHindi: '७ – १२ दिसम्बर २०२६',
+  dateRange: '6 – 12 December 2026',
+  dateRangeHindi: '६ – १२ दिसम्बर २०२६',
   timeZone: 'Asia/Kolkata',
 
   /** The family that sends the invitation (shown on the printed card) */
@@ -77,7 +77,7 @@ export const wedding = {
       id: 'haldi',
       name: 'Haldi',
       nameHindi: 'हल्दी',
-      date: '2026-12-07',
+      date: '2026-12-06',
       time: '',
       venue: '',
       address: '',
@@ -107,15 +107,15 @@ export const wedding = {
       nameHindi: 'मंढा',
       date: '2026-12-11',
       time: '',
-      venue: '',
+      venue: 'Ch. Yashpal Singh House',
       address: 'Seekri, Uttar Pradesh 247231',
       description:
         'The sacred mandap is raised and the family gathers for the auspicious rituals.',
       celebrationMessage: 'The Mandha rituals have begun. Shubh aashirwad! 🪔',
       image: '/img/mandha.jpg',
       accent: '#B0452A',
-      mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=30.041740%2C77.477892',
-      mapEmbedUrl: 'https://www.google.com/maps?q=30.041740%2C77.477892&z=15&output=embed',
+      mapUrl: 'https://maps.app.goo.gl/TbHKqaVvqQTahqGL7',
+      mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d690.1060824919845!2d77.47752891320171!3d30.04056543097304!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ee90034ec67df%3A0x16f1d7fd1fb9a3ac!2sCh.%20Yashpal%20Singh%20House!5e1!3m2!1sen!2sin!4v1794471594322!5m2!1sen!2sin',
     },
     {
       id: 'barat',

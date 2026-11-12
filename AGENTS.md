@@ -4,7 +4,7 @@ This document describes the project for developers and AI agents working on this
 
 ## Project Overview
 
-A single-page traditional North Indian Hindu wedding invitation for Kartik Rawal & Navya Choudhary (Haldi 7 Dec, Mehndi 10 Dec, Mandha 11 Dec, Barat 12 Dec 2026). It is mobile-first because guests open it from WhatsApp. There is no PLAN.md; the product is complete, and future work means filling in venue, time and photo details or making small enhancements.
+A single-page traditional North Indian Hindu wedding invitation for Kartik Rawal & Navya Choudhary (Haldi 6 Dec, Mehndi 10 Dec, Mandha 11 Dec, Barat 12 Dec 2026). It is mobile-first because guests open it from WhatsApp. There is no PLAN.md; the product is complete, and future work means filling in venue, time and photo details or making small enhancements.
 
 ### Wedding architecture
 

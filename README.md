@@ -1,6 +1,6 @@
 # Kartik weds Navya — शुभ विवाह
 
-A traditional North Indian Hindu wedding invitation website for **Kartik Rawal & Navya Choudhary**, celebrating Haldi, Mehndi, Mandha and Barat on **7, 10, 11 and 12 December 2026**.
+A traditional North Indian Hindu wedding invitation website for **Kartik Rawal & Navya Choudhary**, celebrating Haldi, Mehndi, Mandha and Barat on **6, 10, 11 and 12 December 2026**.
 
 The site opens like a real wedding card: guests see a printed envelope with a Ganesh Ji seal, tap **Open Invitation**, and the flap lifts, the card slides out, petals shower and the invitation is revealed — with optional shehnai and dhol music. It is designed mobile-first, because most guests will open it from WhatsApp.
 
