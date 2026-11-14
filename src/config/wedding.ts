@@ -42,13 +42,13 @@ export interface GalleryItem {
 
 export const wedding = {
   groom: {
-    name: 'Kartik Rawal',
+    name: 'Kartik Choudhary',
     firstName: 'Kartik',
-    nameHindi: 'कार्तिक रावल',
+    nameHindi: 'कार्तिक चौधरी',
     firstNameHindi: 'कार्तिक',
     /** e.g. "Son of Shri ... & Smt. ..." — leave '' to hide */
-    parents: '' as string,
-    parentsHindi: '' as string,
+    parents: 'Son of Pradeep Kumar & Omlata Devi' as string,
+    parentsHindi: 'सुपुत्र श्री प्रदीप कुमार एवं श्रीमती ओमलता देवी' as string,
     /** Optional photograph in /public/img, e.g. '/img/kartik.jpg' */
     photo: '' as string,
   },
@@ -57,8 +57,8 @@ export const wedding = {
     firstName: 'Navya',
     nameHindi: 'नव्या चौधरी',
     firstNameHindi: 'नव्या',
-    parents: '' as string,
-    parentsHindi: '' as string,
+    parents: 'Daughter of Lokesh Kumar & Rajni Devi' as string,
+    parentsHindi: 'सुपुत्री श्री लोकेश कुमार एवं श्रीमती रजनी देवी' as string,
     photo: '' as string,
   },
 
@@ -79,7 +79,7 @@ export const wedding = {
       nameHindi: 'हल्दी',
       date: '2026-12-06',
       time: '',
-      venue: '',
+      venue: 'Seekri Kalan',
       address: '',
       description:
         'Turmeric, marigolds and laughter — the first golden blessing of the celebrations.',
@@ -93,10 +93,10 @@ export const wedding = {
       nameHindi: 'मेहंदी',
       date: '2026-12-10',
       time: '',
-      venue: '',
+      venue: 'Seekri Kalan',
       address: '',
       description:
-        'An evening of henna, songs and dholak as the bride’s hands bloom with colour.',
+        'Henna, Ladies Sangeet, songs and dholak as the bride’s hands bloom with colour.',
       celebrationMessage: 'Mehndi rang laayi! The henna evening is on. 🌿',
       image: '/img/mehndi.jpg',
       accent: '#4F6B2A',
@@ -106,11 +106,11 @@ export const wedding = {
       name: 'Mandha',
       nameHindi: 'मंढा',
       date: '2026-12-11',
-      time: '',
+      time: '09:30',
       venue: 'Ch. Yashpal Singh House',
       address: 'Seekri, Uttar Pradesh 247231',
       description:
-        'The sacred mandap is raised and the family gathers for the auspicious rituals.',
+        'Lagan Sagai at 8:30 AM, then the sacred Mandha rituals at 9:30 AM. Lunch from 11:00 AM onwards.',
       celebrationMessage: 'The Mandha rituals have begun. Shubh aashirwad! 🪔',
       image: '/img/mandha.jpg',
       accent: '#B0452A',
@@ -122,8 +122,8 @@ export const wedding = {
       name: 'Barat',
       nameHindi: 'बारात',
       date: '2026-12-12',
-      time: '',
-      venue: 'Veer Farms',
+      time: '10:00',
+      venue: 'Veer Farm',
       address: 'Near Titron, Nakur, Saharanpur, Uttar Pradesh',
       description:
         'The groom rides out on his ghodi with dhol, shehnai and dancing family — the grand wedding day.',
@@ -160,11 +160,10 @@ export const wedding = {
   ] as GalleryItem[],
 
   music: {
-    /**
-     * Optional recorded track in /public/audio (e.g. '/audio/shehnai.mp3').
-     * When empty, a gentle shehnai-and-dhol melody is synthesised in the browser.
-     */
-    src: '' as string,
+    /** The background song in /public/audio, played on a loop */
+    src: '/audio/din-shagna-da.mp3',
+    /** Name shown on the music button while the song plays */
+    title: 'Din Shagna Da',
   },
 }
 

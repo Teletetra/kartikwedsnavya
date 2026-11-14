@@ -4,14 +4,14 @@ This document describes the project for developers and AI agents working on this
 
 ## Project Overview
 
-A single-page traditional North Indian Hindu wedding invitation for Kartik Rawal & Navya Choudhary (Haldi 6 Dec, Mehndi 10 Dec, Mandha 11 Dec, Barat 12 Dec 2026). It is mobile-first because guests open it from WhatsApp. There is no PLAN.md; the product is complete, and future work means filling in venue, time and photo details or making small enhancements.
+A single-page traditional North Indian Hindu wedding invitation for Kartik Choudhary & Navya Choudhary (Haldi 6 Dec, Mehndi 10 Dec, Mandha 11 Dec, Barat 12 Dec 2026). It is mobile-first because guests open it from WhatsApp. There is no PLAN.md; the product is complete, and future work means filling in venue, time and photo details or making small enhancements.
 
 ### Wedding architecture
 
 - `src/config/wedding.ts` is the **single source of truth** for names, dates, times (24h IST `HH:mm`, or `''` for "to be announced"), venues, gallery items and music. It also has helpers: `eventStart()` (an IST instant built with a `+05:30` offset, so countdowns are correct in any viewer timezone), Hindi date and time formatters, `mapsUrl()`, and `cdn()` for Netlify Image CDN URLs. Never hard-code wedding data in components.
 - `src/routes/index.tsx` assembles the page. `InvitationEnvelope` is a full-screen overlay; while it is shown, the main page renders underneath for SSR, and the nav, petals and music controls mount only after it closes.
 - `src/components/wedding/` holds the requested reusable components: `InvitationEnvelope`, `WeddingCountdown`, `BrideGroomSection`, `EventTimeline`, `WeddingCard` (the two-page Hindi printed card), `WeddingGallery` (with lightbox) and `VenueSection`. Alongside them are `Hero`, `Layout` (NavDock and Footer), `Petals`, `MusicControls` (MusicProvider and useMusic) and `Ornaments` (Swastik, Kalash, Om, Divider, Corners, Diya, Mandala, SectionHeading SVGs).
-- `src/lib/music.ts` is a Web Audio synth: a tanpura drone, a shehnai melody in Raag Yaman and a dhol groove. It must be started from a user gesture (the envelope click or the music button). If `wedding.music.src` is set, an `<audio>` file plays instead.
+- `src/lib/music.ts` plays the background song (`wedding.music.src`, currently "Din Shagna Da" in `public/audio/`) on a loop. It must be started from a user gesture (the envelope click or the music button).
 - Images in `public/img/` were generated as AI illustrations in a miniature-painting style. Always reference them through `cdn(src, width)` rather than the raw files.
 
 ### Design tokens

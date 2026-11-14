@@ -130,7 +130,7 @@ export function InvitationEnvelope({
                 className="size-4 accent-[var(--maroon)]"
               />
               <Music2 className="size-3.5 text-gold" />
-              Play shehnai &amp; dhol music
+              {`Play “${wedding.music.title}”`}
             </label>
           </div>
         </div>
