@@ -114,7 +114,7 @@ export const wedding = {
       celebrationMessage: 'The Mandha rituals have begun. Shubh aashirwad! 🪔',
       image: '/img/mandha.jpg',
       accent: '#B0452A',
-      mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=30.04056543097304%2C77.47752891320171&travelmode=driving&dir_action=navigate',
+      mapUrl: 'https://maps.app.goo.gl/TbHKqaVvqQTahqGL7',
       mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d690.1060824919845!2d77.47752891320171!3d30.04056543097304!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ee90034ec67df%3A0x16f1d7fd1fb9a3ac!2sCh.%20Yashpal%20Singh%20House!5e1!3m2!1sen!2sin!4v1794471594322!5m2!1sen!2sin',
     },
     {
@@ -130,7 +130,7 @@ export const wedding = {
       celebrationMessage: 'The Barat has arrived! Shubh Vivah — Kartik weds Navya. 🐎✨',
       image: '/img/barat.jpg',
       accent: '#741C28',
-      mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=Veer%20Farm%2C%20Near%20Titron%2C%20Nakur%2C%20Saharanpur%2C%20Uttar%20Pradesh&travelmode=driving&dir_action=navigate',
+      mapUrl: 'https://maps.app.goo.gl/py6STvqbRJ6s3bZN7',
       mapEmbedUrl: 'https://www.google.com/maps?q=Veer%20Farms%2C%20Titron%2C%20Nakur%2C%20Saharanpur%2C%20Uttar%20Pradesh&z=15&output=embed',
     },
   ] as WeddingEvent[],
@@ -207,7 +207,7 @@ export function formatEventTime(time: string, locale: 'en' | 'hi' = 'en') {
 }
 
 export function mapsUrl(query: string) {
-  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}&travelmode=driving&dir_action=navigate`
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
 }
 
 /** Netlify Image CDN URL for a file in /public */
