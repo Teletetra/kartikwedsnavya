@@ -77,7 +77,7 @@ export function Hero({ revealed }: { revealed: boolean }) {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <span className="font-display text-[0.65rem] tracking-[0.3em] uppercase">Scroll</span>
+        <span className="font-display whitespace-nowrap text-[0.6rem] tracking-[0.12em] uppercase">Scroll down to view venue &amp; location</span>
         <ChevronDown className="size-5" />
       </motion.a>
     </header>
