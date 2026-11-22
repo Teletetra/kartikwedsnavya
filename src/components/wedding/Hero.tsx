@@ -71,8 +71,8 @@ export function Hero({ revealed }: { revealed: boolean }) {
       </div>
 
       <motion.a
-        href="#countdown"
-        aria-label="Scroll to countdown"
+        href="#venue"
+        aria-label="Scroll to venue and location"
         className="absolute bottom-24 left-1/2 flex -translate-x-1/2 flex-col items-center text-maroon sm:bottom-8"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
