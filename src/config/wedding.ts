@@ -207,7 +207,7 @@ export function formatEventTime(time: string, locale: 'en' | 'hi' = 'en') {
 }
 
 export function mapsUrl(query: string) {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}&travelmode=driving&dir_action=navigate`
 }
 
 /** Netlify Image CDN URL for a file in /public */
