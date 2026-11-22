@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { MailOpen, Music2 } from 'lucide-react'
+import { ChevronDown, MailOpen, Music2 } from 'lucide-react'
 import { cdn, wedding } from '@/config/wedding'
 import { Corners, Divider, Kalash, Mandala, Swastik } from './Ornaments'
 import { PetalBurst } from './Petals'
@@ -32,18 +32,26 @@ export function InvitationEnvelope({
     }
   }, [])
 
-  function open() {
+  function open(goToVenue = false) {
     if (phase !== 'closed') return
-    onOpen(withMusic)
+    onOpen(goToVenue ? false : withMusic)
     setPhase('opening')
+    const finish = () => {
+      onDone()
+      if (goToVenue) {
+        window.setTimeout(() => {
+          document.getElementById('venue')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 150)
+      }
+    }
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduce) {
-      onDone()
+      finish()
       return
     }
     window.setTimeout(() => setFlapBehind(true), 750)
     window.setTimeout(() => setPhase('leaving'), 2500)
-    window.setTimeout(onDone, 3300)
+    window.setTimeout(finish, 3300)
   }
 
   const opening = phase !== 'closed'
@@ -109,11 +117,27 @@ export function InvitationEnvelope({
               </div>
             </div>
 
+            <button
+              type="button"
+              onClick={() => open(true)}
+              disabled={opening}
+              className="mb-1 inline-flex flex-col items-center gap-0.5 rounded-md px-3 py-1 text-maroon focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none disabled:pointer-events-none"
+              aria-label="Go to venue and location"
+            >
+              <span className="font-display text-[0.58rem] tracking-[0.12em] uppercase">Go to venue &amp; location</span>
+              <motion.span
+                animate={{ y: [0, 4, 0] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <ChevronDown className="size-4" />
+              </motion.span>
+            </button>
+
             <motion.button
               type="button"
-              onClick={open}
+              onClick={() => open()}
               disabled={opening}
-              className="group relative mt-4 inline-flex items-center gap-2 overflow-hidden rounded-full border-2 border-gold bg-maroon px-7 py-3 font-display text-sm font-semibold tracking-[0.2em] text-paper uppercase shadow-lg focus-visible:ring-4 focus-visible:ring-gold/50 focus-visible:outline-none"
+              className="group relative mt-1 inline-flex items-center gap-2 overflow-hidden rounded-full border-2 border-gold bg-maroon px-7 py-3 font-display text-sm font-semibold tracking-[0.2em] text-paper uppercase shadow-lg focus-visible:ring-4 focus-visible:ring-gold/50 focus-visible:outline-none"
               animate={opening ? { scale: 0.9, opacity: 0 } : { scale: [1, 1.04, 1] }}
               transition={opening ? { duration: 0.3 } : { duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
             >
